@@ -182,7 +182,7 @@ class PretrainBLIVAMistral(Blip2Base):
         attention_mask = torch.cat((atts_add_feature_llm, llm_tokens['attention_mask']), dim=1)
         
         with self.maybe_autocast():
-            outputs = self.llm_model(
+            outputs = self.llm_model.forward(
                 inputs_embeds=inputs_embeds,
                 attention_mask=attention_mask,
                 return_dict=True,

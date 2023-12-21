@@ -48,13 +48,13 @@ run:
   max_epoch: 3 
   accum_grad_iters: 1
 
-  batch_size_train: 8 
+  batch_size_train: 10
   batch_size_eval: 1 
   num_workers: 8 
   warmup_steps: 1000
 
   seed: 42
-  output_dir: "output/pretrain_bliva_vicuna/"
+  output_dir: "output/pretrain_bliva_owl_mistral_558k_on_instruct_model_2_projection_layers/"
 
   amp: True
   resume_ckpt_path: null

@@ -45,7 +45,7 @@ class BLIVAMistral(Blip2Base):
     ):
         super().__init__()
         transformers_version = version.parse(transformers.__version__)
-        assert transformers_version >= version.parse("4.36"), "BLIP-2 Mistral requires transformers>=4.36.1"        
+        assert transformers_version >= version.parse("4.35"), "BLIP-2 Mistral requires transformers>=4.36.1"        
         
         self.tokenizer = self.init_tokenizer(truncation_side="left")
 

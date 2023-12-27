@@ -313,7 +313,7 @@ class LLAVABuilder(BaseDatasetBuilder):
         datasets['train'] = dataset_cls(
             vis_processor=self.vis_processors["train"],
             text_processor=self.text_processors["train"],
-            ann_paths=[os.path.join(storage_path, 'llava_instruct_extrapolated_2.json')], 
+            ann_paths=[os.path.join(storage_path, 'AllDataShuffle.json')], 
             vis_root=vis_root,
         )
 

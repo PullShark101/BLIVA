@@ -12,7 +12,7 @@ with open(file_path, "r") as file:
 def download_models():
     # Snapshot will check if the model is available, if not it will download the model.
     for model_type in models_config_data:
-        if models_config_data[model_type]['donwload_in_repo']==True:
+        if models_config_data[model_type]['download_in_repo']==True:
             snapshot_download(repo_id = models_config_data[model_type]['hf_path'], repo_type = "model", local_dir = "models")
         else:
             snapshot_download(repo_id = models_config_data[model_type]['hf_path'], repo_type = "model")

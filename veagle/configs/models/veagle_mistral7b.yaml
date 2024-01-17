@@ -6,7 +6,7 @@ model:
   load_pretrained: False
 
   # pretrained: ""
-  finetuned: 'models/veagle/superagi_veagle.pth'
+  finetuned: 'models/veagle.pth'
 
   # vit encoder
   image_size: 224

@@ -79,6 +79,9 @@ def main(args):
          
     disable_torch_init()
     
+    # check model availability
+    check_model_availability()
+    
     if args.model_name == "veagle_mistral":
         model, vis_processors, _ = load_model_and_preprocess(name=args.model_name, model_type="mistral7b", is_eval=True, device=args.device)
     vis_processor = vis_processors["eval"]

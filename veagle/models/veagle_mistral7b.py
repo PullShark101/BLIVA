@@ -758,8 +758,6 @@ class VeagleMistral(Blip2Base):
         model = cls(
             freeze_vit=freeze_vit,
             llm_model=llm_model,
-            vision_model_path = 'MAGAer13/mplug-owl2-llama2-7b',
-            qformer_model_path = "Salesforce/instructblip-flan-t5-xl",
             prompt=prompt,
             max_txt_len=max_txt_len,
             max_output_txt_len=max_output_txt_len,

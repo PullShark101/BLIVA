@@ -1,5 +1,4 @@
 from setuptools import setup, find_namespace_packages
-from download_hf import download_models
 import platform
 
 DEPENDENCY_LINKS = []
@@ -29,4 +28,3 @@ setup(
     zip_safe=False,
 )
 
-download_models()

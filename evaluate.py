@@ -11,6 +11,7 @@ def check_model_availability():
     """
     logging.info("Checking the availability of the models")
     download_models()
+    logging.info("Models are available")    
     
     
 def disable_torch_init():

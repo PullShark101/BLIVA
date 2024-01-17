@@ -41,6 +41,7 @@ class VeagleMistral(Blip2Base):
         self.tokenizer = self.init_tokenizer(truncation_side="left")
 
         # Vision Encoder
+        vision_model_path = 'MAGAer13/mplug-owl2-llama2-7b'
         model = AutoModelForCausalLM.from_pretrained(vision_model_path)
         self.visual_encoder = model.get_model().vision_model
         logging.info("Vision Encoder Initialized")

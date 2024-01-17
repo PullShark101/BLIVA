@@ -1,4 +1,5 @@
 from setuptools import setup, find_namespace_packages
+from download_hf import download_models
 import platform
 
 DEPENDENCY_LINKS = []
@@ -11,18 +12,21 @@ def fetch_requirements(filename):
         return [ln.strip() for ln in f.read().split("\n")]
 
 
+
 setup(
-    name="bliva",
+    name="veagle",
     version="1.0.0",
-    description="BLIVA",
+    description="VEAGLE",
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     keywords="Vision-Language, Multimodal, Image Captioning, Generative AI, Deep Learning, Library, PyTorch",
     license="3-Clause BSD",
-    packages=find_namespace_packages(include="bliva.*"),
+    packages=find_namespace_packages(include="veagle.*"),
     install_requires=fetch_requirements("requirements.txt"),
     python_requires=">=3.7.0",
     include_package_data=True,
     dependency_links=DEPENDENCY_LINKS,
     zip_safe=False,
 )
+
+download_models()

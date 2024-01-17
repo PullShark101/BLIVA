@@ -7,16 +7,16 @@ import torch
 import torch.backends.cudnn as cudnn
 import gradio as gr
 
-from bliva.common.config import Config
-from bliva.common.dist_utils import get_rank
-from bliva.common.registry import registry
-from bliva.conversation.conversation import Chat, CONV_VISION, CONV_DIRECT
+from veagle.common.config import Config
+from veagle.common.dist_utils import get_rank
+from veagle.common.registry import registry
+from veagle.conversation.conversation import Chat, CONV_VISION, CONV_DIRECT
 
 # imports modules for registration
 
-from bliva.models import *
-from bliva.processors import *
-from bliva.models import load_model_and_preprocess
+from veagle.models import *
+from veagle.processors import *
+from veagle.models import load_model_and_preprocess
 from evaluate import disable_torch_init
 
 def parse_args():

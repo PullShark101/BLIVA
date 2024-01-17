@@ -1,9 +1,18 @@
 import argparse
+import logging
 import numpy as np
 import argparse
 from PIL import Image
-from bliva.models import load_model_and_preprocess
+from veagle.models import load_model_and_preprocess
+from download_hf import download_models
 
+def check_model_availability():
+    """Checks models availability
+    """
+    logging.info("Checking the availability of the models")
+    download_models()
+    
+    
 def disable_torch_init():
         """
         Disable the redundant torch default initialization to accelerate model creation.
@@ -69,11 +78,7 @@ def main(args):
          
     disable_torch_init()
     
-    if args.model_name == "bliva_vicuna":
-        model, vis_processors, _ = load_model_and_preprocess(name=args.model_name, model_type="vicuna7b", is_eval=True, device=args.device)
-    if args.model_name == "bliva_flant5":
-        model, vis_processors, _ = load_model_and_preprocess(name=args.model_name, model_type="flant5xxl", is_eval=True, device=args.device)
-    if args.model_name == "bliva_mistral":
+    if args.model_name == "veagle_mistral":
         model, vis_processors, _ = load_model_and_preprocess(name=args.model_name, model_type="mistral7b", is_eval=True, device=args.device)
     vis_processor = vis_processors["eval"]
     

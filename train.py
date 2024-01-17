@@ -13,23 +13,23 @@ import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
 
-import bliva.tasks as tasks
-from bliva.common.config import Config
-from bliva.common.dist_utils import get_rank, init_distributed_mode
-from bliva.common.logger import setup_logger
-from bliva.common.optims import (
+import veagle.tasks as tasks
+from veagle.common.config import Config
+from veagle.common.dist_utils import get_rank, init_distributed_mode
+from veagle.common.logger import setup_logger
+from veagle.common.optims import (
     LinearWarmupCosineLRScheduler,
     LinearWarmupStepLRScheduler,
 )
-from bliva.common.registry import registry
-from bliva.common.utils import now
+from veagle.common.registry import registry
+from veagle.common.utils import now
 
 # imports modules for registration
-from bliva.datasets.builders import *
-from bliva.models import *
-from bliva.processors import *
-from bliva.runners import *
-from bliva.tasks import *
+from veagle.datasets.builders import *
+from veagle.models import *
+from veagle.processors import *
+from veagle.runners import *
+from veagle.tasks import *
 import torch.distributed as dist
 
 import wandb

@@ -19,11 +19,11 @@ scikit-image
 sentencepiece
 spacy
 streamlit
-timm==0.4.12
+timm
 torch
 torchvision
 tqdm
-transformers==4.35.0
+transformers
 webdataset
 wheel
 peft

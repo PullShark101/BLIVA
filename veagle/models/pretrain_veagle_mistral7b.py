@@ -29,7 +29,6 @@ class PretrainVeagleMistral(Blip2Base):
     ):
         super().__init__()
         
-        
         self.tokenizer = self.init_tokenizer(truncation_side="left")
 
         # Vision Encoder

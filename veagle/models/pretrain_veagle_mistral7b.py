@@ -17,12 +17,12 @@ class PretrainVeagleMistral(Blip2Base):
     PRETRAINED_MODEL_CONFIG_DICT = {
         "mistral7b": "configs/models/veagle_mistral7b.yaml",
     }
-    
+     
     def __init__(
         self,
+        llm_model,
+        vision_model_path,
         freeze_vit=True,
-        llm_model="mistralai/Mistral-7B-Instruct-v0.2",
-        vision_model_path = 'MAGAer13/mplug-owl2-llama2-7b',
         max_txt_len=128,
         max_output_txt_len=256,
         qformer_text_input=True,
@@ -198,36 +198,21 @@ class PretrainVeagleMistral(Blip2Base):
 
     @classmethod
     def from_config(cls, cfg):
-        vit_model = cfg.get("vit_model", "eva_clip_g")
-        img_size = cfg.get("image_size")
-        num_query_token = cfg.get("num_query_token")
         llm_model = cfg.get("llm_model")
-
-        drop_path_rate = cfg.get("drop_path_rate", 0)
-        use_grad_checkpoint = cfg.get("use_grad_checkpoint", False)
-        vit_precision = cfg.get("vit_precision", "fp16")
+        vision_model = cfg.get("vision_model")
+        
         freeze_vit = cfg.get("freeze_vit", True)
 
-        prompt = cfg.get("prompt", "")
         max_txt_len = cfg.get("max_txt_len", 128)
         max_output_txt_len = cfg.get("max_output_txt_len", 256)
-
-        apply_lemmatizer = cfg.get("apply_lemmatizer", False)
 
         qformer_text_input = cfg.get("qformer_text_input", True)
 
         return cls(
-            vit_model=vit_model,
-            img_size=img_size,
-            drop_path_rate=drop_path_rate,
-            use_grad_checkpoint=use_grad_checkpoint,
-            vit_precision=vit_precision,
             freeze_vit=freeze_vit,
-            num_query_token=num_query_token,
             llm_model=llm_model,
-            prompt=prompt,
+            vision_model_path=vision_model,
             max_txt_len=max_txt_len,
             max_output_txt_len=max_output_txt_len,
-            apply_lemmatizer=apply_lemmatizer,
             qformer_text_input=qformer_text_input,
         )

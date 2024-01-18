@@ -16,6 +16,7 @@ import torch.nn as nn
 from transformers import AutoTokenizer, AutoModelForCausalLM, InstructBlipForConditionalGeneration
 from veagle.common.registry import registry
 from veagle.models.blip2 import Blip2Base, disabled_train, LayerNorm
+from mplug_owl2.model.modeling_mplug_owl2 import MPLUGOwl2LlamaForCausalLM
 
 @registry.register_model("veagle_mistral")
 class VeagleMistral(Blip2Base):
@@ -26,10 +27,10 @@ class VeagleMistral(Blip2Base):
 
     def __init__(
         self,
+        llm_model,
+        vision_model_path,
+        qformer_model_path,
         freeze_vit=True,
-        llm_model="mistralai/Mistral-7B-Instruct-v0.2",
-        vision_model_path = 'MAGAer13/mplug-owl2-llama2-7b',
-        qformer_model_path = "Salesforce/instructblip-flan-t5-xl",
         prompt="",
         max_txt_len=128,
         max_output_txt_len=256,
@@ -42,7 +43,7 @@ class VeagleMistral(Blip2Base):
 
         # Vision Encoder
         vision_model_path = 'MAGAer13/mplug-owl2-llama2-7b'
-        model = AutoModelForCausalLM.from_pretrained(vision_model_path)
+        model = MPLUGOwl2LlamaForCausalLM.from_pretrained(vision_model_path)
         self.visual_encoder = model.get_model().vision_model
         logging.info("Vision Encoder Initialized")
         if freeze_vit:
@@ -755,10 +756,14 @@ class VeagleMistral(Blip2Base):
         apply_lemmatizer = cfg.get("apply_lemmatizer", False)
 
         qformer_text_input = cfg.get("qformer_text_input", True)
-
+        vision_model = cfg.get("vision_model")
+        qformer_model = cfg.get("qformer_model")
+        
         model = cls(
             freeze_vit=freeze_vit,
             llm_model=llm_model,
+            vision_model_path = vision_model,
+            qformer_model_path = qformer_model,
             prompt=prompt,
             max_txt_len=max_txt_len,
             max_output_txt_len=max_output_txt_len,

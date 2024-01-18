@@ -5,7 +5,7 @@ model:
   load_finetuned: True 
   load_pretrained: False
 
-  # pretrained: ""
+  pretrained: ""
   finetuned: 'models/veagle.pth'
 
   # vit encoder
@@ -18,8 +18,10 @@ model:
   # Q-Former
   num_query_token: 32
 
-  # path to Mistral checkpoint
+  # path to Models for vision, language, and qformer (** Mandataory **)
   llm_model: "mistralai/Mistral-7B-Instruct-v0.2"
+  vision_model: "MAGAer13/mplug-owl2-llama2-7b"
+  qformer_model: "Salesforce/instructblip-flan-t5-xl"
 
   # generation configs
   prompt: ""

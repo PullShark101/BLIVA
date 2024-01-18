@@ -3,7 +3,7 @@ model:
   arch: pretrain_veagle_mistral 
   model_type: mistral7b
   load_finetuned: False
-  load_pretrained: True
+  load_pretrained: False
 
   pretrained: ""
   finetuned: ""
